@@ -1,5 +1,5 @@
 <?php
-include_once($_SERVER['DOCUMENT_ROOT']."/thenet/classes/DB.php");
+include_once("classes/DB.php");
 $db = Db::getInstance();
 header('Content-type: application/json');
 $method = $_SERVER['REQUEST_METHOD'];
@@ -44,7 +44,7 @@ function validateRest($method,$data,$path,$action,$id) {
 }
 
 function error($message,$code=400) {
-    http_response_code(400);
+    http_response_code($code);
     echo json_encode(['status'=>false,'description'=>$message]);
     die();
 }
